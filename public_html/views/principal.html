@@ -1,9 +1,46 @@
-                    <h2>Produtos</h2>
-                    <ul>
-                        <li ng-repeat="p in produtos| filter: minmax as listaFiltrada">
-                            <a ui-sref="produto({id: {{p.id}}})">{{p.nome}}</a> - {{p.preco| currency}}
-                        </li>
-                        <li ng-if="listaFiltrada.length === 0" class="alert alert-warning" role="alert">
-                            Nenhum produto encontrado!
-                        </li>
-                    </ul>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        
+        
+    
+    </head>
+    
+    <body>
+        <div class="row">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Terminada</th>
+                            <th>Tarefa</th>
+                            <th>Prazo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="tarefa in tarefas | filter:filtroTarefas" class="{{(tarefa.status) ? 'grifar ' : ''}}">
+                            <td>
+                                <input type="checkbox"  ng-model="tarefa.status">
+                                
+                            </td>
+                            <td style="width:60%">{{tarefa.Nome}}</td>
+                            <td>
+                                {{tarefa.Prazo}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <p>
+            <button ui-sref="novaTarefa()" type="button" class="btn btn-info ">Nova Tarefa</button>
+            </p>
+        </div>
+                
+    </body>
+
+</html>
